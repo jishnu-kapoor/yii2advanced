@@ -1,9 +1,9 @@
 <?php
-namespace app\controllers;
+namespace frontend\controllers;
 
 use yii\web\Controller;
 use yii\data\Pagination;
-use app\models\Country;
+use frontend\models\Country;
 
 class CountryController extends Controller
 {

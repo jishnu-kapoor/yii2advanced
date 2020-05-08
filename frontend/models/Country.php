@@ -1,10 +1,10 @@
 <?php
 
-namespace app\models;
+namespace frontend\models;
 
 use yii\db\ActiveRecord;
 
-use app\models\Country;
+use frontend\models\Country;
 
 class Country extends ActiveRecord
 {
