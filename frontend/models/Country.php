@@ -1,25 +1,50 @@
 <?php
-
+//model using the gii tool
+//Creating an active record class
 namespace frontend\models;
 
-use yii\db\ActiveRecord;
+use Yii;
 
-use frontend\models\Country;
-
-class Country extends ActiveRecord
+/**
+ * This is the model class for table "country".
+ *
+ * @property string $code
+ * @property string $name
+ * @property int $population
+ */
+class Country extends \yii\db\ActiveRecord
 {
+    /**
+     * {@inheritdoc}
+     */
+    public static function tableName()
+    {
+        return 'country';
+    }
 
+    /**
+     * {@inheritdoc}
+     */
+    public function rules()
+    {
+        return [
+            [['code', 'name'], 'required'],
+            [['population'], 'integer'],
+            [['code'], 'string', 'max' => 2],
+            [['name'], 'string', 'max' => 52],
+            [['code'], 'unique'],
+        ];
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function attributeLabels()
+    {
+        return [
+            'code' => 'Code',
+            'name' => 'Name',
+            'population' => 'Population',
+        ];
+    }
 }
-
-// get all rows from the country table and order them by "name"
-$countries = Country::find()->orderBy('name')->all();
-
-// get the row whose primary key is "US"
-$country = Country::findOne('US');
-
-// displays "United States"
-echo $country->name;
-
-// modifies the country name to be "U.S.A." and save it to database
-$country->name = 'U.S.A.';
-$country->save();
