@@ -36,6 +36,18 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
+
+            'modules' => [
+                // a "booking" module specified with the module class
+                'forum' => 'frontend\modules\forum\Module',
+
+                // a "comment" module specified with a configuration array
+//                'comment' => [
+//                    'class' => 'app\modules\comment\CommentModule',
+//                    'db' => 'db',
+//                ],
+            ],
+
         /*
         'urlManager' => [
             'enablePrettyUrl' => true,
